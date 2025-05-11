@@ -3,7 +3,7 @@ import requests
 # === Step 1: Your personal details ===
 payload = {
     "name": "Atishay Jain",          # Change to your real name
-    "regNo": "REG12347",         # Change if your actual regNo is different
+    "regNo": "1164",         # Change if your actual regNo is different
     "email": "atishayjain220751@gmail.com"  # Use your email
 }
 
