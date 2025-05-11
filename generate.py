@@ -4,7 +4,7 @@ import requests
 payload = {
     "name": "Atishay Jain",         
     "regNo": "1164",        
-    "email": "atishayjain220751@gmail.com"  
+    "email": "atishayjain220751@acropolis.in"  
 }
 
 
