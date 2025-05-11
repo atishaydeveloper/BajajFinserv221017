@@ -2,11 +2,11 @@
 import requests
 import sys
 
-# ───── CONFIGURATION ───────────────────────────────────────────────────────────
+
 WEBHOOK_URL = "https://bfhldevapigw.healthrx.co.in/hiring/testWebhook/PYTHON"
 TOKEN       = "eyJhbGciOiJIUzI1NiJ9.eyJyZWdObyI6IjA4MjdDRDIyMTAxNyIsIm5hbWUiOiJBdGlzaGF5IEphaW4iLCJlbWFpbCI6ImF0aXNoeWphaW4yMjA3NTFAYWNyb3BvbGlzLmluIiwic3ViIjoid2ViaG9vay11c2VyIiwiaWF0IjoxNzQ2OTU5OTA5LCJleHAiOjE3NDY5NjA4MDl9.Ol0GCSSYs1bCuEuA-uhJZTYZkvizdyOit7e2LJeHflA"
 
-# ───── YOUR FINAL SQL ─────────────────────────────────────────────────────────
+
 FINAL_SQL = """
 SELECT 
     E1.EMP_ID,
