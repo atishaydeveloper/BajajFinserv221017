@@ -4,27 +4,21 @@ import sys
 
 
 WEBHOOK_URL = "https://bfhldevapigw.healthrx.co.in/hiring/testWebhook/PYTHON"
-TOKEN       = "eyJhbGciOiJIUzI1NiJ9.eyJyZWdObyI6IjA4MjdDRDIyMTAxNyIsIm5hbWUiOiJBdGlzaGF5IEphaW4iLCJlbWFpbCI6ImF0aXNoeWphaW4yMjA3NTFAYWNyb3BvbGlzLmluIiwic3ViIjoid2ViaG9vay11c2VyIiwiaWF0IjoxNzQ2OTU5OTA5LCJleHAiOjE3NDY5NjA4MDl9.Ol0GCSSYs1bCuEuA-uhJZTYZkvizdyOit7e2LJeHflA"
+TOKEN       = "eyJhbGciOiJIUzI1NiJ9.eyJyZWdObyI6IlJFRzEyMzQ3IiwibmFtZSI6IkF0aXNoYXkgSmFpbiIsImVtYWlsIjoiYXRpc2hheWphaW4yMjA3NTFAYWNyb3BvbGlzLmluIiwic3ViIjoid2ViaG9vay11c2VyIiwiaWF0IjoxNzQ2OTYxODk2LCJleHAiOjE3NDY5NjI3OTZ9.Rpio0zjlM92vWNWzxdrzUZEH8kItmVYsZbJMSMK2xtg"
 
 
 FINAL_SQL = """
-SELECT 
-    E1.EMP_ID,
-    E1.FIRST_NAME,
-    E1.LAST_NAME,
-    D.DEPARTMENT_NAME,
-    COUNT(E2.EMP_ID) AS YOUNGER_EMPLOYEES_COUNT
-FROM 
-    EMPLOYEE E1
-JOIN 
-    DEPARTMENT D ON E1.DEPARTMENT = D.DEPARTMENT_ID
-LEFT JOIN 
-    EMPLOYEE E2 ON E1.DEPARTMENT = E2.DEPARTMENT
-               AND E2.DOB > E1.DOB
-GROUP BY 
-    E1.EMP_ID, E1.FIRST_NAME, E1.LAST_NAME, D.DEPARTMENT_NAME
-ORDER BY 
-    E1.EMP_ID DESC;
+SELECT
+    p.amount AS SALARY,
+    CONCAT(e.first_name, ' ', e.last_name) AS NAME,
+    TIMESTAMPDIFF(YEAR, e.dob, p.payment_time) AS AGE,
+    d.department_name
+FROM payments p
+JOIN employee e ON p.emp_id = e.emp_id
+JOIN department d ON e.department = d.department_id
+WHERE EXTRACT(DAY FROM p.payment_time) <> 1
+ORDER BY p.amount DESC
+LIMIT 1;
 
 """
 
